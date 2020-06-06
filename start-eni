@@ -1,0 +1,12 @@
+#!/bin/bash
+# This script's funtion is to start the easy changed network interface name.
+# Do not change this, else you cannot connect the network
+# This Script was started by NetworkManger-start-eni.service
+
+ENIS=$(/usr/bin/nmcli device status |/usr/bin/grep disconnected|/usr/bin/cut -f 1 -d ' ')
+if  [ -n "$ENIS" ]; then
+        for ENI in $ENIS
+        do
+                /usr/bin/nmcli device connect $ENI
+        done
+fi
