@@ -1,11 +1,11 @@
 [Unit]
 Description=Start Disconnected ENI Service
-After=NetworkManager.service
-Requires=NetworkManager.service
+After=multi-user.target
 
 [Service]
 Type=oneshot
 ExecStart=/bin/start-eni
+RemainAfterExit=true
 
 [Install]
 WantedBy=multi-user.target
